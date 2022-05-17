@@ -41,18 +41,20 @@ public class EncryptieController {
      */
     @FXML
     protected void onDecryptButtonClick() {
-        if(btnAchterstevoren.isSelected()){
-            // algoritme 1
-            EncryptieAchterstevoren encryptor = new EncryptieAchterstevoren();
+        EncryptionAlgorithm encryptor = null;
+        if(btnAchterstevoren.isSelected()) {
+            encryptor = new EncryptieAchterstevoren();
+        }else if(btnEigen.isSelected()) {
+            encryptor = new EncryptieShift();
+        }
 
+        if(encryptor == null) {
+            Alert alert = new Alert(Alert.AlertType.NONE, "Select eerst een encryptiemethode", ButtonType.CLOSE);
+            alert.show();
+        } else {
             String input = txtVersleuteld.getText();
             String output = encryptor.decrypt(input);
             txtOrigineel.setText(output);
-        } else if(btnEigen.isSelected()){
-
-        } else {
-            Alert alert = new Alert(Alert.AlertType.NONE, "Select eerst een encryptiemethode", ButtonType.CLOSE);
-            alert.show();
         }
     }
 }

@@ -1,7 +1,8 @@
 package be.odisee.encryptie;
 
-public class EncryptieAchterstevoren {
+public class EncryptieAchterstevoren extends EncryptionAlgorithm{
 
+    @Override
     public String encrypt(String input){
         String output = "";
 
@@ -12,6 +13,7 @@ public class EncryptieAchterstevoren {
         return output;
     }
 
+    @Override
     public String decrypt(String input){
         return encrypt(input);
     }
