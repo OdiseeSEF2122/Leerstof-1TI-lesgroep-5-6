@@ -15,7 +15,8 @@ public class Tijdspanne {
      * @param andere andere tijdspanne
      */
     public void bijTellen(Tijdspanne andere) {
-        //TODO implement
+        // TODO dit is geimplementeerd
+        minuten += andere.getMinuten();
     }
 }
 /** onthoudt een tijdspanne als een aantal minuten en seconden */
@@ -30,5 +31,9 @@ class PreciezeTijdspanne extends Tijdspanne {
     }
 
     //TODO optellen van 2 PreciezeTijdspanne
+    public void bijTellen(PreciezeTijdspanne andere){
+        super.bijTellen(andere);
+        seconden += andere.getSeconden();
+    }
 
 }

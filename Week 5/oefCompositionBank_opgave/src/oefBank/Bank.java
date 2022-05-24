@@ -7,9 +7,17 @@ public class Bank {
 
     private ArrayList<Account> accounts = new ArrayList<Account>();
 
-    public void openAccount(Account account){
-        if(!accounts.contains(account)) {
-            accounts.add(account);
+    public double openAccount(){
+        Account account = new Account();
+        accounts.add(account);
+        return account.getAccountNumber();
+    }
+
+    private Account findAccount(double rekeningnummer){
+        for(Account account: accounts){
+            if(account.getAccountNumber() == rekeningnummer){
+                return account;
+            }
         }
     }
 
@@ -17,8 +25,18 @@ public class Bank {
         return accounts.size();
     }
 
-    public void closeAccount(Account account){
-        accounts.remove(account);
+    public void closeAccount(double rekeningnummer){
+        accounts.remove(findAccount(rekeningnummer));
+    }
+
+    public void withdraw(double rekeningnummer, double amount){
+        //TODO eventueel extra checks of amount niet negatief is etc
+        findAccount(rekeningnummer).withdraw(amount);
+    }
+
+    public void deposit(double rekeningnummer, double amount){
+        //TODO eventueel extra checks of amount niet negatief is etc
+        findAccount(rekeningnummer).deposit(amount);
     }
 
 
